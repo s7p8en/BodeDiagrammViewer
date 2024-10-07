@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 }
 
-bodediagramm::bodediagramm(std::complex<float> constantK,std::vector<std::complex<float>> *coeffNumerator, std::vector<std::complex<float>> *coeffDenominator, float maxFreq, float minFreq){
+bodediagramm::bodediagramm(std::complex<float> constantK, std::vector<std::complex<float>> *coeffNumerator, std::vector<std::complex<float>> *coeffDenominator, float maxFreq, float minFreq){
     this->maxFrequency = maxFreq;
     this->minFrequency = minFreq;
     this->constantK = constantK;
@@ -19,6 +19,8 @@ bodediagramm::bodediagramm(std::complex<float> constantK,std::vector<std::comple
     this->coeffNumerator->shrink_to_fit();
     this->coeffDenominator = coeffDenominator;
     this->coeffDenominator->shrink_to_fit();
+    calculateAmplitudeReserve();
+    calculatePhaseReserve();
 }
 
 std::complex<float> bodediagramm::Auswertung(float Frequency){
@@ -32,10 +34,10 @@ std::complex<float> bodediagramm::Auswertung(float Frequency){
     std::complex<float> omega(0, Frequency*2*M_PI);
     std::complex<float> numerator(1, 0);
     std::complex<float> denominator(1, 0);
-    for(unsigned long long i = 0; i<coeffNumerator->size(); i++){
+    for(unsigned long long i = 0; i<coeffNumerator->size(); i++){// Der Zähler wird durch das Produkt aller Nullstellenkomponenten erstellt.
         numerator = numerator * (omega - coeffNumerator->at(i));
     }
-    for (unsigned long long i = 0; i<coeffDenominator->size(); i++){
+    for (unsigned long long i = 0; i<coeffDenominator->size(); i++){// Der Nenner wird durch das Produkt aller Polstellenkomponenten erstellt.
         denominator = denominator * (omega - coeffDenominator->at(i));
     }
     return constantK * (numerator/denominator);
@@ -62,45 +64,48 @@ void bodediagramm::calculatePhaseReserve(){
     float middlePoint = (minFrequency+maxFrequency)/2;
     float higherPoint = maxFrequency;
     float frequencyDifferenz = higherPoint - lowerPoint;
-    if (abs(Auswertung(minFrequency)) == 1){                                                // Case 1
-        this->PhaseReserve = calculatePhase(minFrequency);
-    } else if (abs(Auswertung(maxFrequency)) == 1){                                         // Case 2
-        this->PhaseReserve = calculatePhase(maxFrequency);
-    } else if (abs(Auswertung(minFrequency)) > 1 && abs(Auswertung(maxFrequency)) < 1){     // Case 3
-//Intervallhalbierungverfahren wird angewandt. Dazu wird überprüft, ob die Amplitude den Wert Null zwischen der unteren und der mittleren Frequenz durchsticht
-//Falls dies nicht zutrifft wird angenommen der Wert 1 der Amplitude liegt zwischen der mittleren und oberen Frequenz.
-//Spezialfall falls die mittlere Frequenz auf die 1 trifft
-        while (frequencyDifferenz > 0.1){
+    if (abs(Auswertung(minFrequency)) == 1){
+        this->PhaseReserve = 180 + calculatePhase(minFrequency);
+        this->checkPhaseReserve = true;
+        return;
+    }
+    else if (abs(Auswertung(maxFrequency)) == 1){
+        this->PhaseReserve = 180 + calculatePhase(maxFrequency);
+        this->checkPhaseReserve = true;
+        return;
+    }
+    else if (abs(Auswertung(minFrequency)) > 1 && abs(Auswertung(maxFrequency)) > 1){
+        return; // Keine Schnittstelle.
+    }
+    else if (abs(Auswertung(minFrequency)) < 1 && abs(Auswertung(maxFrequency)) < 1){
+        return; // Keine Schnittstelle.
+    }
+    else if (abs(Auswertung(minFrequency)) > 1 && abs(Auswertung(maxFrequency)) < 1){
+        while (frequencyDifferenz > 0.1){                           // TODO Die minimale Frequenz Differenz einstellen
             if (abs(Auswertung(middlePoint))== 1){
                 this->PhaseReserve = 180 + (calculatePhase(middlePoint));
                 this->checkPhaseReserve = true;
                 return;
             }
-            else if (abs(Auswertung(lowerPoint)) > 1 && abs(Auswertung(middlePoint)) < 1){
+            else if (abs(Auswertung(middlePoint)) < 1){
                 higherPoint = middlePoint;
                 middlePoint = (lowerPoint + higherPoint)/2;
-                frequencyDifferenz = higherPoint - lowerPoint;
             }
             else {
                 lowerPoint = middlePoint;
                 middlePoint = (lowerPoint + higherPoint)/2;
-                frequencyDifferenz = higherPoint - lowerPoint;
             }
+            frequencyDifferenz = higherPoint - lowerPoint;
         }
-        if (abs(Auswertung(middlePoint)) < 0.1){
-            this->PhaseReserve = 180 + (calculatePhase(middlePoint));
-            this->checkPhaseReserve = true;
-            return;
-        }
-    } else if (abs(Auswertung(minFrequency)) < 1 && abs(Auswertung(maxFrequency)) > 1){     // Case 4
-//Intevallhalbierungsverfahren wird angewandt. Fast gleiche Vorgehensweise wie in der else if Anweisung zuvor
+    }
+    else if (abs(Auswertung(minFrequency)) < 1 && abs(Auswertung(maxFrequency)) > 1){
         while (frequencyDifferenz > 0.1){
             if (abs(Auswertung(middlePoint))== 1){
                 this->PhaseReserve = 180 + (calculatePhase(middlePoint));
                 this->checkPhaseReserve = true;
                 return;
             }
-            else if (abs(Auswertung(lowerPoint)) < 1 && abs(Auswertung(middlePoint)) > 1){
+            else if (abs(Auswertung(middlePoint)) > 1){
                 higherPoint = middlePoint;
                 middlePoint = (lowerPoint + higherPoint)/2;
                 frequencyDifferenz = higherPoint - lowerPoint;
@@ -117,13 +122,91 @@ void bodediagramm::calculatePhaseReserve(){
             return;
         }
     }
-
+    this->PhaseReserve = 180 +(calculatePhase(middlePoint));
+    this->checkPhaseReserve = true;
+    return;
 };
 
-float calculateAmplitudeReserve(){
-    return 0.0;
+void bodediagramm::calculateAmplitudeReserve(){
+    /** @brief
+     *
+     *
+     *
+     *
+    **/
+    float lowerPoint = minFrequency;
+    float higherPoint = maxFrequency;
+    float middlePoint = (lowerPoint + higherPoint)/2;
+    float frequencyDifferenz = higherPoint - lowerPoint;
+    if (calculatePhase(lowerPoint) == -180){
+        this->AmplitudeReserve = -log10(abs(Auswertung(lowerPoint)));
+        this->checkAmplitudeReserve = true;
+    }
+    else if (calculatePhase(higherPoint) == -180){
+        this->AmplitudeReserve = -log10(abs(Auswertung(higherPoint)));
+        this->checkAmplitudeReserve = true;
+    }
+    else if(calculatePhase(lowerPoint) > -180 && calculatePhase(higherPoint) > -180){
+        return; // Wird angenommen, dass keine Schnittstelle existiert, da beide Grenzwert über -180° liegen.
+    }
+    else if(calculatePhase(lowerPoint) < -180 && calculatePhase(higherPoint) < -180){
+        return; // Wird angenommen, dass keine Schnittstelle existiert, da beide Grenzwerte unter -180° liegen.
+    }
+    else if(calculatePhase(lowerPoint) > -180 && calculatePhase(higherPoint) < -180){//Zwischen Beiden Punkten liegt eine Schnittstelle mit -180°
+        while (frequencyDifferenz > 0.1){   // TODO Minial Wert setzen
+            if (calculatePhase(middlePoint) == -180){
+                //this->AmplitudeReserve = -log10(abs(Auswertung(middlePoint)));
+                //this->checkAmplitudeReserve = true;
+                break;
+            }
+            else if (calculatePhase(middlePoint) > -180){
+                lowerPoint = middlePoint;
+                middlePoint = (lowerPoint + higherPoint)/2;
+            }
+            else if (calculatePhase(middlePoint) < -180){
+                higherPoint = middlePoint;
+                middlePoint = (lowerPoint + higherPoint)/2;
+            }
+            frequencyDifferenz = higherPoint - lowerPoint;
+        }
+    }
+    else if(calculatePhase(lowerPoint) < -180 && calculatePhase(higherPoint) > -180){
+        while (frequencyDifferenz > 0.1) {
+            if (calculatePhase(middlePoint) == -180){
+                //this->AmplitudeReserve = -log10(abs(Auswertung(middlePoint))); // TODO Minus überprüfen
+                //this->checkAmplitudeReserve = true;
+                break;
+            }
+            else if (calculatePhase(middlePoint) > -180){
+                higherPoint = middlePoint;
+                middlePoint = (lowerPoint + higherPoint)/2;
+            }
+            else if (calculatePhase(middlePoint) < -180){
+                lowerPoint = middlePoint;
+                middlePoint = (lowerPoint + higherPoint)/2;
+            }
+            frequencyDifferenz = higherPoint - lowerPoint;
+        }
+    }
+    this->AmplitudeReserve = -log10(abs(Auswertung(middlePoint)));
+    this->checkAmplitudeReserve = true;
+    return;
 };
 
+float bodediagramm::getAmplitudeReserve(){
+    return AmplitudeReserve;
+}
+
+bool bodediagramm::getCheckAmplitudeReserve(){
+    return checkAmplitudeReserve;
+}
+float bodediagramm::getPhaseReserve(){
+    return PhaseReserve;
+}
+
+bool bodediagramm::getCheckPhaseReserve(){
+    return checkPhaseReserve;
+}
 MainWindow::~MainWindow()
 {
     delete ui;
