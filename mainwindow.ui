@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QToolBox" name="toolBox">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page">
        <property name="geometry">
@@ -26,355 +26,390 @@
          <x>0</x>
          <y>0</y>
          <width>888</width>
-         <height>523</height>
+         <height>493</height>
         </rect>
        </property>
        <attribute name="label">
         <string>Eingabe</string>
        </attribute>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>13</x>
-          <y>13</y>
-          <width>882</width>
-          <height>448</height>
-         </rect>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <item row="0" column="0">
-          <layout class="QGridLayout" name="gridLayout_3">
-           <item row="0" column="0" rowspan="2">
-            <widget class="QSpinBox" name="spinBoxHigherFrequency">
-             <property name="minimumSize">
-              <size>
-               <width>100</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="readOnly">
-              <bool>false</bool>
-             </property>
-             <property name="prefix">
-              <string>10^</string>
-             </property>
-             <property name="minimum">
-              <number>-10</number>
-             </property>
-             <property name="maximum">
-              <number>15</number>
-             </property>
-             <property name="value">
-              <number>1</number>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="label">
+       <layout class="QGridLayout" name="gridLayout_12">
+        <item row="0" column="0">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0" rowspan="2">
+           <widget class="QSpinBox" name="spinBoxHigherFrequency">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
+            <property name="prefix">
+             <string>10^</string>
+            </property>
+            <property name="minimum">
+             <number>-10</number>
+            </property>
+            <property name="maximum">
+             <number>15</number>
+            </property>
+            <property name="value">
+             <number>1</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3" rowspan="2">
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Higher Frequency</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QLabel" name="labelErrorExponent">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Lower Frequency</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QLabel" name="labelErrorPolNullstellen">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QSpinBox" name="spinBoxLowerFrequency">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="prefix">
+             <string>10^</string>
+            </property>
+            <property name="minimum">
+             <number>-10</number>
+            </property>
+            <property name="maximum">
+             <number>15</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="2">
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="pushButtonHelp">
+            <property name="text">
+             <string>Help</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="2" column="0" colspan="2">
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>173</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="2">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pushButtonAddNullstelle">
+            <property name="text">
+             <string>Nullstelle hinzufügen</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="3">
+           <widget class="QPushButton" name="pushButtonSave">
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QTableWidget" name="tableWidgetNullstellen">
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>true</bool>
+            </attribute>
+            <column>
              <property name="text">
-              <string>Higher Frequency</string>
+              <string>Reelle Teil</string>
              </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="labelErrorExponent">
+            </column>
+            <column>
              <property name="text">
-              <string/>
+              <string>Imaginärer Teil</string>
              </property>
-            </widget>
-           </item>
-           <item row="1" column="3" rowspan="2">
-            <spacer name="horizontalSpacer_6">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="2" column="0">
-            <widget class="QSpinBox" name="spinBoxLowerFrequency">
-             <property name="minimumSize">
-              <size>
-               <width>100</width>
-               <height>25</height>
-              </size>
-             </property>
-             <property name="prefix">
-              <string>10^</string>
-             </property>
-             <property name="minimum">
-              <number>-10</number>
-             </property>
-             <property name="maximum">
-              <number>15</number>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLabel" name="label_2">
+            </column>
+           </widget>
+          </item>
+          <item row="0" column="3" colspan="2">
+           <widget class="QTableWidget" name="tableWidgetPolstellen">
+            <property name="selectionMode">
+             <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+            </property>
+            <attribute name="verticalHeaderVisible">
+             <bool>true</bool>
+            </attribute>
+            <column>
              <property name="text">
-              <string>Lower Frequency</string>
+              <string>Reeller Teil</string>
              </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QLabel" name="labelErrorPolNullstellen">
+            </column>
+            <column>
              <property name="text">
-              <string/>
+              <string>Imaginärer Teil</string>
              </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="0">
-          <layout class="QGridLayout" name="gridLayout_4">
-           <item row="0" column="0" colspan="2">
-            <widget class="QTableWidget" name="tableWidgetNullstellen">
-             <property name="selectionMode">
-              <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-             </property>
-             <property name="selectionBehavior">
-              <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-             </property>
-             <attribute name="verticalHeaderVisible">
-              <bool>true</bool>
-             </attribute>
-             <column>
-              <property name="text">
-               <string>Reelle Teil</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Imaginärer Teil</string>
-              </property>
-             </column>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <spacer name="horizontalSpacer_4">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="0" column="3" colspan="2">
-            <widget class="QTableWidget" name="tableWidgetPolstellen">
-             <property name="selectionMode">
-              <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
-             </property>
-             <property name="selectionBehavior">
-              <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-             </property>
-             <attribute name="verticalHeaderVisible">
-              <bool>true</bool>
-             </attribute>
-             <column>
-              <property name="text">
-               <string>Reeller Teil</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Imaginärer Teil</string>
-              </property>
-             </column>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QPushButton" name="pushButtonAddNullstelle">
-             <property name="text">
-              <string>Nullstelle hinzufügen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QPushButton" name="pushButtonRemoveNullstelle">
-             <property name="text">
-              <string>Nullstelle entfernen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="3">
-            <widget class="QPushButton" name="pushButtonAddPolstelle">
-             <property name="text">
-              <string>Polstelle hinzufügen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QPushButton" name="pushButtonRemovePolstelle">
-             <property name="text">
-              <string>Polstelle entfernen</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0" colspan="2">
-            <spacer name="horizontalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>173</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="2" column="4">
-            <widget class="QPushButton" name="pushButtonDraw">
-             <property name="text">
-              <string>Bode-Diagramm</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="3">
-            <widget class="QPushButton" name="pushButton">
-             <property name="text">
-              <string>Save</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="1">
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0" colspan="2">
-            <widget class="QLabel" name="labelKonstantK">
-             <property name="text">
-              <string>Konstante K</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QDoubleSpinBox" name="doubleSpinBoxKonstantKReal">
-             <property name="suffix">
-              <string/>
-             </property>
-             <property name="value">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1" colspan="2">
-            <widget class="QDoubleSpinBox" name="doubleSpinBoxKonstantKImag">
-             <property name="suffix">
-              <string> * i</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <spacer name="verticalSpacer_2">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>124</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="2" column="3">
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>172</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0">
-          <layout class="QGridLayout" name="gridLayout_5">
-           <item row="0" column="0">
-            <widget class="QLabel" name="labelAmplitudenReserve">
-             <property name="text">
-              <string>Amplituden Reserve: </string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <spacer name="horizontalSpacer_5">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="labelPhasenReserve">
-             <property name="text">
-              <string>Phasen Reserve:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <spacer name="horizontalSpacer_7">
-             <property name="orientation">
-              <enum>Qt::Orientation::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="2" column="0" colspan="2">
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Orientation::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>533</width>
-               <height>68</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
+            </column>
+           </widget>
+          </item>
+          <item row="1" column="4">
+           <widget class="QPushButton" name="pushButtonRemovePolstelle">
+            <property name="text">
+             <string>Polstelle entfernen</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="4">
+           <widget class="QPushButton" name="pushButtonDraw">
+            <property name="text">
+             <string>Bode-Diagramm</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="pushButtonRemoveNullstelle">
+            <property name="text">
+             <string>Nullstelle entfernen</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="3">
+           <widget class="QPushButton" name="pushButtonAddPolstelle">
+            <property name="text">
+             <string>Polstelle hinzufügen</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="1" colspan="2">
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="1" column="1" colspan="2">
+           <widget class="QDoubleSpinBox" name="doubleSpinBoxKonstantKImag">
+            <property name="prefix">
+             <string>i * </string>
+            </property>
+            <property name="suffix">
+             <string/>
+            </property>
+            <property name="decimals">
+             <number>4</number>
+            </property>
+            <property name="minimum">
+             <double>-1000.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>124</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="3">
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>172</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QDoubleSpinBox" name="doubleSpinBoxKonstantKReal">
+            <property name="suffix">
+             <string/>
+            </property>
+            <property name="decimals">
+             <number>4</number>
+            </property>
+            <property name="minimum">
+             <double>-1000.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>1000.000000000000000</double>
+            </property>
+            <property name="value">
+             <double>1.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QLabel" name="labelKonstantK">
+            <property name="text">
+             <string>Konstante K</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="1">
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="labelPhasenReserve">
+            <property name="text">
+             <string>Phasen Reserve:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="labelAmplitudenReserve">
+            <property name="text">
+             <string>Amplituden Reserve: </string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>533</width>
+              <height>68</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="page_2">
        <property name="geometry">
@@ -382,7 +417,7 @@
          <x>0</x>
          <y>0</y>
          <width>888</width>
-         <height>523</height>
+         <height>493</height>
         </rect>
        </property>
        <attribute name="label">
@@ -398,6 +433,74 @@
          </rect>
         </property>
        </widget>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>888</width>
+         <height>493</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Help</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_13">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="plainTextEditHelp">
+          <property name="plainText">
+           <string>Die Grafische Benutzeroberfläche ist in drei Tabs unterteilt. Die Tabs sind 'Eingabe', 'Bode-Diagramm' und 'Help'. Im Tab der Eingabe kann die Übertragungsfunktion eingegeben werden, das Bode-Diagramm abgespeichert und die Hilfe Funktion aufgerufen werden. Das Tab des Bode-Diagramms stellt das Bode-Diagramm der Übertragungsfunktion grafisch dar. Das Tab 'Hilfe' enthält wichtige Information zur Benutzung der Software.
+
+
+Eingabe:
+    Frequenzen
+        Bei Higher Frequency und Lower Frequnecy kann der Frequenzbereich eingegeben werde.
+        Maximale Frequenz 10^15, Minimale Frequenz 10^-10
+        Unterschied zwischen beiden Potenzen muss mindestens 1 sein.
+    Konstante K:
+        Festlegung des Realteils und des Imaginärteils
+        Maximalbereich für Realteil und Imaginärteil [-1000, 1000]
+    Nullstellen:
+        Linke Tabelle enthält die Nullstellen
+        Button 'Nullstelle hinzufügen' fügt ein Zeile der linken Tabelle hinzu
+        Jede Zeile steht für eine Nullstelle, linke Spalte der Zeile für Realteil und rechte Spalte für Imaginärteil
+        Maximalbereich für Realteil und Imaginärteil [-10000, 10000]
+        Zum Entfernen wird eine Zeile mit der Maus ausgewählt und auf den Button 'Nullstelle entfernen' gedrückt
+    Polstellen:
+        Rechte Tabelle enthält die Polstellen
+        Button 'Polstelle hinzufügen' fügt ein Zeile der linken Tabelle hinzu
+        Jede Zeile steht für eine Polstelle, linke Spalte der Zeile für Realteil und rechte Spalte für Imaginärteil
+        Maximalbereich für Realteil und Imaginärteil [-10000, 10000]
+        Zum Entfernen wird eine Zeile mit der Maus ausgewählt und auf den Button 'Polstelle entfernen' gedrückt
+    Bode-Diagramm
+        Vorraussetzungen:
+            Differenz der Maximalen und Minimalen Frequenz ist größer als 0
+            Anzahl der Polstellen ist größer oder gleich der Anzahl der Nullstellen
+        Zeichnet das Bode-Diagramm der eingegebenen Übertragungsfunktion in das Tab 'Bode-Diagramm'
+        Berechnung der Amplitudenreserve und Phasenreserve
+        Vorraussetzung:
+            - Genau ein Schnittpunkt des Phasendiagramms mit der -180°-Achse für die Existenz der Amplitudenreserve
+            - Genau ein Schnittpunkt des Amplitudendiagramm mit der 0 dB-Achse für die Existenz der Phasenreserve
+
+
+    Save
+        Speichert das aktuell dargestellte Diagramm aus dem Tab 'Bode-Diagramm' in den gleichen Ordner wie 'BodeDiagrammViewer.exe'
+        Name der Datei: Bode-Diagramm.png
+
+    Amplitudenreserve und Phasenreserve
+        Ausgabe der Amplitudenreserve und/oder der Phasenreserve, falls vorhanden
+
+    Help
+        Wechselt das Tab auf 'Help'
+        Ausgabe einer Anleitung zur Benutzung des Programms</string>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>

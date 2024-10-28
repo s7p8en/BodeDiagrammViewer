@@ -62,7 +62,10 @@ private slots:
     void on_pushButtonRemovePolstelle_clicked();
 
     void on_pushButtonDraw_clicked();
-    void on_pushButton_clicked();
+
+    void on_pushButtonHelp_clicked();
+
+    void on_pushButtonSave_clicked();
 
 private:
     Ui::MainWindow *ui;
